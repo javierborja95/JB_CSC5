@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Template
+PROJECTNAME=Savitch_9thEd_Chap2_Prob4_MadLib
 
 # Active Configuration
 DEFAULTCONF=Debug
