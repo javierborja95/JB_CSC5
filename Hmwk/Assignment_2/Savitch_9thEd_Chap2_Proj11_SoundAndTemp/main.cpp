@@ -32,10 +32,8 @@ cout<<"in between the two temperatures.\n\n";
 cout<<"What is the initial temperature in Celcius?: ";
       
 cin>>tIni;
-cout<<"C°"<<endl;
 cout<<"What is the final temperature in Celcius?: ";
 cin>>tFin;
-cout<<"C°"<<endl;
 
     //Process Data
 if (tIni<=tFin)
