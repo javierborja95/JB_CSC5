@@ -7,6 +7,7 @@
 
 //System Libraries
 #include <iostream>   //Input/ Output Stream Library
+
 using namespace std;  //iostream uses the standard namespace
 
 //User Libraries
@@ -15,17 +16,20 @@ using namespace std;  //iostream uses the standard namespace
 
 //Function Prototypes
 
-//Execution Begins Here!
+//Execution
+
 int main(int argc, char** argv) {
-    //Declare Variables
+cout.setf(ios::fixed);
+cout.setf(ios::showpoint);
+cout.precision();
+    //Variables
  
     //Input Data
-       
+
     //Process Data
                    
     //Output Data
- 
-    //Exit Stage Right!
+
     return 0;
 }
 

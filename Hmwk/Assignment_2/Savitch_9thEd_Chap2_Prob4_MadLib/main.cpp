@@ -31,8 +31,6 @@ int main(int argc, char** argv) {
     //Input Data
     cout<<"Welcome to this game of Mad Lib. I'm going to ask for a few words.\n"
           "Press return when you enter them.\n"
-    
-    //Process Data
           "Enter the first or last name of your instructor: ";
     cin>>instNam;
     cout<<"Enter your first name: ";
