@@ -19,17 +19,37 @@ using namespace std;  //iostream uses the standard namespace
 //Execution
 
 int main(int argc, char** argv) {
-cout.setf(ios::fixed);
-cout.setf(ios::showpoint);
-cout.precision();
     //Variables
- 
+    bool x, y;
+    
     //Input Data
 
     //Process Data
-                   
+                 
     //Output Data
-
+    //heading
+    cout<<"The truth Table"<<endl;
+    cout<<"X Y !X !Y X||Y X&&Y X^Y X^Y^Y X^YX !(X||Y) !X&&!Y";
+    cout<<"!(X&&Y !X||Y"<<endl;
+    
+    //first row
+    x=true;y=false;
+    cout<<(x?'T':'F')<<" ";
+    cout<<(y?'T':'F')<<"  ";
+    cout<<(!x?'T':'F')<<"  ";
+    cout<<(!y?'T':'F')<<"   ";
+    cout<<(x||y?'T':'F')<<"  ";
+    cout<<endl;
+    
+    //Second Row
+    x=true;y=false;
+    cout<<(x?'T':'F')<<" ";
+    cout<<(y?'T':'F')<<"  ";
+    cout<<(!x?'T':'F')<<"  ";
+    cout<<(!y?'T':'F')<<"   ";
+    cout<<(x||y?'T':'F')<<"  ";
+    cout<<endl;
+    
     return 0;
 }
 
