@@ -31,7 +31,7 @@ float bmr,            //Basal Metabolic rate. Calories need to maintain weight.
 
     //Input Data
 cout<<"Press return after answering each question.\n\n"
-      "What is your gender?\n";
+      "What is your gender? M or F?\n";
 cin>>ans;
 gen=ans[0];
 cout<<"What is your weight in pounds?\n";
