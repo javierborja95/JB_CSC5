@@ -13,12 +13,13 @@ using namespace std;  //iostream uses the standard namespace
 //User Libraries
 
 //Global Constants
-const float PAYINCR=.076f;  //Pay increase. 7.6%
+
 //Function Prototypes
 
 //Execution Begins Here!
 int main(int argc, char** argv) {
     //Declare Variables
+    const float PAYINCR=.076f;  //Pay increase. 7.6%
                    //All in dollars
     float sal,     //Worker's salary for the past year
           monSal,  //Worker's previous monthly salary 

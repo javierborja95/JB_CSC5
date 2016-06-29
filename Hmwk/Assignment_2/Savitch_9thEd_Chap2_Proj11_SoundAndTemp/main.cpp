@@ -19,45 +19,45 @@ using namespace std;  //iostream uses the standard namespace
 //Execution Begins Here!
 int main(int argc, char** argv) {
     //Declare Variables
-int   tIni,           //Initial temperature of dry air in C
-      tFin;           //Final Temperature of dry air in C
-float velocty;        //Velocity of sound in m/s. velocity=331.3+(.61*T)
+    int   tIni,           //Initial temperature of dry air in C
+          tFin;           //Final Temperature of dry air in C
+    float velocty;        //Velocity of sound in m/s. velocity=331.3+(.61*T)
 
     //Input Data
-cout.setf(ios::fixed);
-cout.setf(ios::showpoint);
-cout.precision(1);
-cout<<"This program figures out the velocity of sound at 2 specific temperatures, and displays all the velocities\n";
-cout<<"in between the two temperatures.\n\n";
-cout<<"What is the initial temperature in Celcius?: ";
-      
-cin>>tIni;
-cout<<"What is the final temperature in Celcius?: ";
-cin>>tFin;
+    cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+    cout.precision(1);
+    cout<<"This program figures out the velocity of sound at 2 specific temperatures, and displays all the velocities\n";
+    cout<<"in between the two temperatures.\n\n";
+    cout<<"What is the initial temperature in Celcius?: ";
+
+    cin>>tIni;
+    cout<<"What is the final temperature in Celcius?: ";
+    cin>>tFin;
 
     //Process Data
-if (tIni<=tFin)
-{do
-{
-velocty=331.3f+(.61f*tIni);
+    if (tIni<=tFin)
+    {do
+    {
+    velocty=331.3f+(.61f*tIni);
 
     //Output Data
 
-cout<<"At "<<tIni<<"° C, the velocity of sound is "<<velocty<<" m/s\n";
-tIni=tIni+1;
-}while(tIni<=tFin);
-}
-else{
-do
-{
-velocty=331.3f+(.61f*tIni);
+    cout<<"At "<<tIni<<"° C, the velocity of sound is "<<velocty<<" m/s\n";
+    tIni=tIni+1;
+    }while(tIni<=tFin);
+    }
+    else{
+    do
+    {
+    velocty=331.3f+(.61f*tIni);
 
     //Output Data
 
-cout<<"At "<<tIni<<"° C, the velocity of sound is "<<velocty<<" m/s\n";
-tIni=tIni-1;
-}while(tIni>=tFin);
-}
+    cout<<"At "<<tIni<<"° C, the velocity of sound is "<<velocty<<" m/s\n";
+    tIni=tIni-1;
+    }while(tIni>=tFin);
+        }
    
     //Exit Stage Right!
     return 0;
