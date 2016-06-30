@@ -29,16 +29,16 @@ int main(int argc, char** argv) {
           "Please select the problem you wish to view by typing the number and pressing enter.\n\n";
 do{
     cout<<"The possible options are:\n"
-          "1.  Savitch_9thEd_Chap3_Prob01_RockPaperScissors_1\n"
+          "1.  Savitch_9thEd_Chap3_Prob01_RockPaperScissors\n"
           "2.  Savitch_9thEd_Chap3_Prob02_RevolvingCreditAccount\n"
           "3.  Savitch_9thEd_Chap3_Prob03_BirthdayHoroscopes\n"
-          "4.  Savitch_9thEd_Chap2_Proj3_RetroPay_v2\n"
-          "5.  Savitch_9thEd_Chap2_Proj5_RoomCapacity\n"
-          "6.  Savitch_9thEd_Chap2_Proj6_GrossAndTakehomePay\n"
-          "7.  Savitch_9thEd_Chap2_Proj9_PosAndNegNum\n"
-          "8.  Savitch_9thEd_Chap2_Proj11_SoundAndTemp\n"
-          "9.  Savitch_9thEd_Chap2_Proj12_WellGallons\n"
-          "10. Savitch_9thEd_Chap2_Proj13_ChocolateDiet\n";
+          "4.  Savitch_9thEd_Chap3_Prob04_HoroscopesAndElements\n"
+          "5.  test\n"
+          "6.  test\n"
+          "7.  test\n"
+          "8.  test\n"
+          "9.  test\n"
+          "10. test\n";
     cin>>choice;
     
     //Process Data
@@ -106,6 +106,7 @@ do{
             cin>>ans; cout<<endl;
             }while(ans=='y'||ans=='Y');
                 cout<<"Thanks for playing!"<<endl;
+            break;
            }
     case 2:{
             //Variables
@@ -148,7 +149,7 @@ do{
                   "Type in 'Y' or 'N' :";
             cin>>ans;
             }while(ans=='y'||ans=='Y'); //Runs program again if user wants
-            return 0;
+            break;
            }
     case 3:{
             //Variables
@@ -291,15 +292,189 @@ do{
 
                 cout<<"Do you want to run this program again? Type in 'Y' or 'N' : ";
                 cin>>ans;
-            }while (ans=='Y'||ans=='y');        
+            }while (ans=='Y'||ans=='y');
+            break;
            }
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-    case 10:
+    case 4:{
+            //Variables
+            short month; //Birthday Month [1,12](Jan-Dec)
+            short day;   //Day of month
+            char  ans;   //Answer to "Do you want to run this program again?"
+
+            //Input Data
+            cout<<"This is an astrology program. Enter in your birthday and press enter.\n";
+            do{
+            cout<<"\nWhat is your birthday month number? (ex. January=1, December=12) :";
+            cin>>month;
+            cout<<"\nAnd the day? :";
+            cin>>day;
+
+            //Process Data
+
+            //Output Data
+            if     ((month==3)&&((day>=21)&&(day<=31))){
+                cout<<"Your birthday is March "<<day<<". So your sign is Aries.\n";
+                cout<<"Your element is Fire, you are most compatible with Leo and Sagittarius.\n";}
+                if ((month==3)&&(day==21||day==22))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Pisces.\n";
+            else if((month==4)&&((day>=1)&&(day<=19))){
+                cout<<"Your birthday is April "<<day<<". So your sign is Aries.";
+                cout<<"Your element is Fire, you are most compatible with Leo and Sagittarius.\n";}
+                if ((month==4)&&(day==18||day==19))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Taurus.\n";
+            //end Aries
+
+            if     ((month==4)&&((day>=20)&&(day<=30))){
+                cout<<"Your birthday is April "<<day<<". So your sign is Taurus.\n";
+                cout<<"Your element is Earth, you are most compatible with Virgo and Capricorn.\n";}
+                if ((month==4)&&(day==20||day==21))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Aries.\n";
+            else if((month==5)&&((day>=1)&&(day<=20))){
+                cout<<"Your birthday is May "<<day<<". So your sign is Taurus.";
+                cout<<"Your element is Earth, you are most compatible with Virgo and Capricorn.\n";}
+                if ((month==5)&&(day==19||day==20))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Gemini.\n";
+            //end Taurus
+
+            if     ((month==5)&&((day>=21)&&(day<=31))){
+                cout<<"Your birthday is April "<<day<<". So your sign is Gemini.\n";
+                cout<<"Your element is Air, you are most compatible with Libra and Aquarius.\n";}
+                if ((month==5)&&(day==21||day==22))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Taurus.\n";
+            else if((month==6)&&((day>=1)&&(day<=21))){
+                cout<<"Your birthday is June "<<day<<". So your sign is Gemini.";
+                cout<<"Your element is Air, you are most compatible with Libra and Aquarius.\n";}
+                if ((month==6)&&(day==20||day==21))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Cancer.\n";
+            //end Gemini
+
+            if     ((month==6)&&((day>=22)&&(day<=30))){
+                cout<<"Your birthday is June "<<day<<". So your sign is Cancer.\n";
+                cout<<"Your element is Water, you are most compatible with Scorpio and Pisces.\n";}
+                if ((month==6)&&(day==22||day==23))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Gemini.\n";
+            else if((month==7)&&((day>=1)&&(day<=22))){
+                cout<<"Your birthday is July "<<day<<". So your sign is Cancer.";
+                cout<<"Your element is Water, you are most compatible with Scorpio and Pisces.\n";}
+                if ((month==7)&&(day==22||day==23))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Leo.\n";
+            //end Cancer
+
+            if     ((month==7)&&((day>=23)&&(day<=31))){
+                cout<<"Your birthday is July "<<day<<". So your sign is Leo.\n";
+                cout<<"Your element is Fire, you are most compatible with Aries and Sagittarius.\n";}
+                if ((month==7)&&(day==23||day==24))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Cancer.\n";
+            else if((month==8)&&((day>=1)&&(day<=22))){
+                cout<<"Your birthday is August "<<day<<". So your sign is Leo.";
+                cout<<"Your element is Fire, you are most compatible with Aries and Sagittarius.\n";}
+                if ((month==8)&&(day==21||day==22))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Virgo.\n";
+            //end Leo
+
+            if     ((month==8)&&((day>=23)&&(day<=31))){
+                cout<<"Your birthday is August "<<day<<". So your sign is Virgo.\n";
+                cout<<"Your element is Earth, you are most compatible with Taurus and Capricorn.\n";}
+                if ((month==8)&&(day==23||day==24))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Leo.\n";
+            else if((month==9)&&((day>=1)&&(day<=22))){
+                cout<<"Your birthday is September "<<day<<". So your sign is Virgo.";
+                cout<<"Your element is Earth, you are most compatible with Taurus and Capricorn.\n";}
+                if ((month==9)&&(day==21||day==22))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Libra.\n";
+            //end Virgo
+
+            if     ((month==9)&&((day>=23)&&(day<=30))){
+                cout<<"Your birthday is September "<<day<<". So your sign is Libra.\n";
+                cout<<"Your element is Air, you are most compatible with Gemini and Aquarius.\n";}
+                if ((month==9)&&(day==23||day==24))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Virgo.\n";
+            else if((month==10)&&((day>=1)&&(day<=22))){
+                cout<<"Your birthday is October "<<day<<". So your sign is Libra.";
+                cout<<"Your element is Air, you are most compatible with Gemini and Aquarius.\n";}
+                if ((month==10)&&(day==21||day==22))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Scorpio.\n";
+            //end Libra
+
+            if     ((month==10)&&((day>=23)&&(day<=31))){
+                cout<<"Your birthday is October "<<day<<". So your sign is Scorpio.\n";
+                cout<<"Your element is Water, you are most compatible with Cancer and Pisces.\n";}
+                if ((month==10)&&(day==23||day==24))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Libra.\n";
+            else if((month==11)&&((day>=1)&&(day<=21))){
+                cout<<"Your birthday is November "<<day<<". So your sign is Scorpio.";
+                cout<<"Your element is Water, you are most compatible with Cancer and Pisces.\n";}
+                if ((month==11)&&(day==20||day==21))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Sagittarius.\n";
+            //end Scorpio
+
+            if     ((month==11)&&((day>=22)&&(day<=30))){
+                cout<<"Your birthday is November "<<day<<". So your sign is Sagittarius.\n";
+                cout<<"Your element is Fire, you are most compatible with Aries and Leo.\n";}
+                if ((month==11)&&(day==22||day==23))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Scorpio.\n";
+            else if((month==12)&&((day>=1)&&(day<=21))){
+                cout<<"Your birthday is December "<<day<<". So your sign is Sagittarius.";
+                cout<<"Your element is Fire, you are most compatible with Aries and Leo.\n";}
+                if ((month==12)&&(day==20||day==21))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Capricorn.\n";
+            //end Sagittarius
+
+            if     ((month==12)&&((day>=22)&&(day<=31))){
+                cout<<"Your birthday is December "<<day<<". So your sign is Capricorn.\n";
+                cout<<"Your element is Earth, you are most compatible with Taurus and Virgo.\n";}
+                if ((month==12)&&(day==22||day==23))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Sagittarius.\n";
+            else if((month==1)&&((day>=1)&&(day<=19))){
+                cout<<"Your birthday is January "<<day<<". So your sign is Capricorn.";
+                cout<<"Your element is Earth, you are most compatible with Taurus and Virgo.\n";}
+                if ((month==1)&&(day==18||day==19))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Aquarius.\n";
+            //end Capricorn
+
+            if     ((month==1)&&((day>=20)&&(day<=31))){
+                cout<<"Your birthday is January "<<day<<". So your sign is Aquarius.\n";
+                cout<<"Your element is Air, you are most compatible with Gemini and Libra.\n";}
+                if ((month==1)&&(day==20||day==21))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Capricorn.\n";
+            else if((month==2)&&((day>=1)&&(day<=18))){
+                cout<<"Your birthday is February "<<day<<". So your sign is Aquarius.";
+                cout<<"Your element is Air, you are most compatible with Gemini and Libra.\n";}
+                if ((month==2)&&(day==17||day==18))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Pisces.\n";
+            //end Aquarius
+
+            if     ((month==2)&&((day>=19)&&(day<=29))){
+                cout<<"Your birthday is April "<<day<<". So your sign is Pisces.\n";
+                cout<<"Your element is Water, you are most compatible with Cancer and Scorpio.\n";}
+                if ((month==2)&&(day==19||day==20))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Aquarius.\n";
+            else if((month==3)&&((day>=1)&&(day<=20))){
+                cout<<"Your birthday is March "<<day<<". So your sign is Pisces.";
+                cout<<"Your element is Water, you are most compatible with Cancer and Scorpio.\n";}
+                if ((month==3)&&(day==19||day==20))
+                    cout<<"Your birthday is on a cusp! The nearest adjacent sign is Aries.\n";
+            //end Pisces
+            if     (month>=13||day>=32)
+                cout<<"That's not a real birthday.\n";
+
+                cout<<"Do you want to run this program again? Type in 'Y' or 'N' : ";
+                cin>>ans;
+            }while (ans=='Y'||ans=='y');
+            break;
+           }
+    case 5:{cout<<"test";
+    break;}
+    case 6:{cout<<"test";
+    break;}
+    case 7:{cout<<"test";
+    break;}
+    case 8:{cout<<"test";
+    break;}
+    case 9:{cout<<"test";
+    break;}
+    case 10:{cout<<"test";
+    break;}
     default:cout<<"That is an invalid choice.\n";}
     
     cout<<endl;
