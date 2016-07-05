@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Template
+PROJECTNAME=Gaddis_7thEd_Chap4_Prob22_PhoneCharge
 
 # Active Configuration
 DEFAULTCONF=Debug
