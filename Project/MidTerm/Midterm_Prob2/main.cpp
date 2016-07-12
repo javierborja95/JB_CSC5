@@ -71,7 +71,7 @@ int main(int argc, char** argv) {
     }else if (num1==-1){//Input blank instead of '*'
         cout<<" ";
     }else cout<<"?";
-    //End num4
+    //End num1
     return 0;
 }
 
