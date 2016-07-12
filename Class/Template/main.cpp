@@ -18,9 +18,6 @@ using namespace std;  //Namespace of the System Libraries
 //Execution
 
 int main(int argc, char** argv) {
-cout.setf(ios::fixed);
-cout.setf(ios::showpoint);
-cout.precision();
     //Variables
  
     //Input Data
