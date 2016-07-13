@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
             num4-=1;
             cout<<"*";
         }while(num4>=0);
-    }else if (num4==-1){//Input blank instead of '*'
+    }else if (num4==-1){//Input blank instead of '*' or '?'
         cout<<" ";
     }else cout<<"?";
     //End num4
@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
             num3-=1;
             cout<<"*";
         }while(num3>=0);
-    }else if (num3==-1){//Input blank instead of '*'
+    }else if (num3==-1){//Input blank instead of '*' or '?'
         cout<<" ";
     }else cout<<"?";
     //End num3
@@ -57,7 +57,7 @@ int main(int argc, char** argv) {
             num2-=1;
             cout<<"*";        
         }while(num2>=0);
-    }else if (num2==-1){//Input blank instead of '*'
+    }else if (num2==-1){//Input blank instead of '*' or '?'
         cout<<" ";
     }else cout<<"?";
     //End num2
@@ -68,7 +68,7 @@ int main(int argc, char** argv) {
             num1-=1;
             cout<<"*";
         }while(num1>=0);
-    }else if (num1==-1){//Input blank instead of '*'
+    }else if (num1==-1){//Input blank instead of '*' or '?'
         cout<<" ";
     }else cout<<"?";
     //End num1
