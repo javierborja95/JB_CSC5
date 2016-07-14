@@ -106,17 +106,17 @@ int main(int argc, char** argv) {
 float billA(int hrs){//Bill with package A
     float bill;
     bill=(hrs<=5)?16.75:        //If less than 5 hrs bill=$16.75
-         (hrs<=20)?             //$ .75 for additional hrs (Max 20 hrs)
+         (hrs<=20)?             //$ .75 for additional hrs (Max 15 add. hrs)
             ((hrs-5)*.75)+16.75://Max bill $28.00
-         (hrs-20)+28.00;           //$1.00 after 5 hrs and 20 hrs extra (25 hrs)
+         (hrs-20)+28.00;           //$1.00 after 5 hrs and 15 hrs extra (20 hrs)
     return (bill);
 }
         
 float billB(int hrs){//Bill with package B
     float bill;
     bill=(hrs<=15)?23.75:       //If less than 15 hrs bill=$23.75
-         (hrs<=25)?             //$ .55 for additional hrs (Max 25 hrs)
+         (hrs<=25)?             //$ .55 for additional hrs (Max 10 add. hrs)
             ((hrs-15)*.55)+23.75://Max bill $29.25
-         ((hrs-25)*.7)+29.25;         //$ .70 after 15 hrs and 25 hrs extra (40 hrs)
+         ((hrs-25)*.7)+29.25;         //$ .70 after 15 hrs and 10 hrs extra (25 hrs)
     return (bill);
 }

@@ -15,7 +15,7 @@ using namespace std;  //Namespace of the System Libraries
 //Global Constants
 
 //Function Prototypes
-float fact(int num);//Factorial Function
+float fact(int);//Factorial Function
 //Execution
 
 int main(int argc, char** argv) {
