@@ -1,0 +1,8 @@
+The rules of this game are simple.
+Guess the 4 digit combination of the Ai in under 10 turns.
+First, type in a 4 digit combination. Numbers 1-8, no duplicates.
+Next, the computer will tell you how you are doing.
+It will output a potentially 4 character string.
+X's = correct number and position.
+O's = correct number and incorrect position.
+If you can not guess the computer's combination in ten turns, you lose.
