@@ -144,7 +144,8 @@ bool turn(int ai1,int ai2,int ai3,int ai4){
 
 void read(ifstream &read){
     string string;
-    getline(read, string);
+    getline(read,string);
+    cout<<endl;
     
     while(!read.fail()){
         cout<<string;
