@@ -37,13 +37,12 @@ int main(int argc, char** argv) {
     const int SIZE=20;
     char   fName[SIZE];     //First Name
     string lName;           //Last Name
-    int wins=0;
-    int loss=0;
-    
-    ofstream out;           //Output results to file
     char choice;            //Menu choice
     int trn;                //Turn
-    bool win;               //Game result. Win results in true
+    bool win;               //Game result. True results in win
+    unsigned int wins=0;
+    unsigned int loss=0;
+    ofstream out;           //Output results to file
     
     //Input Data
     
@@ -63,7 +62,7 @@ int main(int argc, char** argv) {
             if(win==true)
                 wins++;
             else
-                loss++;
+                loss+=1;
             break;
             case'2':read();break;
         }
@@ -104,7 +103,6 @@ bool game(int &trn){
     do{
         ai4=(rand()%8+1);
     }while (ai4==ai1||ai4==ai2||ai4==ai3);//No duplicates
-    //cout<<ai1<<ai2<<ai3<<ai4<<endl;
     for(int maxTrn=10;(trn<=maxTrn&&nxtTrn==true);trn++){//Game ends at 10 turns
         cout<<"Turn = "<<trn<<endl;
         nxtTrn=turn(ai1,ai2,ai3,ai4);
@@ -210,7 +208,7 @@ void read(){
     }
     line.close();
     cout<<endl<<endl;
-}
+} 
 
 void menu(){
     cout<<"Press 1 to play MasterMind.\n"
