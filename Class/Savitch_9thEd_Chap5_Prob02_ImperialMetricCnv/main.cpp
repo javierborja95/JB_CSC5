@@ -51,7 +51,7 @@ void convert(int& ft,int& in,float& m,int& cm){
     float totFtIn; //total feet & inches
     totFtIn=ft+(in/12.0f);
     m=totFtIn*FTMCNV;
-    cm=(m-static_cast<int>(m))*1000;
+    cm=((m-static_cast<int>(m))*1000)+.05;
 }
 
 void display(float m,int cm){
