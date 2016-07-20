@@ -19,13 +19,12 @@ using namespace std;  //Namespace of the System Libraries
 
 int main(int argc, char** argv) {
     //Variables
- 
+
     //Input Data
 
     //Process Data
-                   
+    
     //Output Data
 
     return 0;
 }
-
