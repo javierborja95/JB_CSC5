@@ -40,6 +40,7 @@ int main(int argc, char** argv) {
     
     //Process Data
     lindex=linSrch(array,SIZE,value);
+    bindex=binSrch(array,SIZE,value);
     
     //Output Data
     if(lindex==-1)cout<<"Linear value not found"<<endl;
@@ -58,7 +59,7 @@ int binSrch(int a[],int n,int val){
         if(a[middle]==val)return middle;
         else if(a[middle]<val)beg=middle+1;
         else end=middle-1;
-    }while(end>beg);
+    }while(end>=beg);
     return -1;
 }
 
@@ -85,7 +86,7 @@ int random(int beg,int end){
 void filAray(int a[],int n){
     //Declare Variables
     int step=10;
-    for(int i=0,beg=1000;i<n;i++){
+    for(int i=0,beg=1000;i<n;i++,beg+=step){
         a[i]=random(beg,beg+step);
     }
 }

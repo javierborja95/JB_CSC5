@@ -24,7 +24,7 @@ using namespace std;  //Namespace of the System Libraries
 //Execution
 
 int main(int argc, char** argv) {
-    srand(static_cast<unsigned int>time(0));
+    srand(static_cast<unsigned int>(time(0)));
     //Variables
     int nGames,nWins=0,nLose=0;
     string fName;
