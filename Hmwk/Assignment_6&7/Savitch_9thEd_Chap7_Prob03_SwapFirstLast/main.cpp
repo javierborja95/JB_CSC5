@@ -16,7 +16,7 @@ using namespace std;  //Namespace of the System Libraries
 
 
 //Function Prototypes
-void firstLast2();
+void firstLast();
 void swap(int&,int&);
 
 //Execution
@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     //Input Data
     cout<<"Input as many integers as you like\n"
           "When you are done, input a 0 or a character."<<endl;
-    firstLast2();
+    firstLast();
     
     //Process Data
     
@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-void firstLast2(){
+void firstLast(){
     //Declare Variables
     const int SIZE=100;
     int intAray[SIZE]={};
