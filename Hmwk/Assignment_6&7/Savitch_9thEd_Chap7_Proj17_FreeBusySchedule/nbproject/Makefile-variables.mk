@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin_4.x-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Debug=assignment_6_7_menu
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/assignment_6_7_menu
+CND_ARTIFACT_NAME_Debug=savitch_9thed_chap7_proj17_freebusyschedule
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/savitch_9thed_chap7_proj17_freebusyschedule
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Debug=assignment6&7menu.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/assignment6&7menu.tar
+CND_PACKAGE_NAME_Debug=savitch9thedchap7proj17freebusyschedule.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/savitch9thedchap7proj17freebusyschedule.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin_4.x-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Release=assignment_6_7_menu
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/assignment_6_7_menu
+CND_ARTIFACT_NAME_Release=savitch_9thed_chap7_proj17_freebusyschedule
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/savitch_9thed_chap7_proj17_freebusyschedule
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Release=assignment6&7menu.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/assignment6&7menu.tar
+CND_PACKAGE_NAME_Release=savitch9thedchap7proj17freebusyschedule.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/savitch9thedchap7proj17freebusyschedule.tar
 #
 # include compiler specific variables
 #

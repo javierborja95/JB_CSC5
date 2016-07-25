@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Assignment_6&7_Menu
+PROJECTNAME=Savitch_9thEd_Chap7_Proj17_FreeBusySchedule
 
 # Active Configuration
 DEFAULTCONF=Debug

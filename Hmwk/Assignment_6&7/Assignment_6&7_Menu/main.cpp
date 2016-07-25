@@ -19,9 +19,10 @@ using namespace std;  //Namespace of the System Libraries
 
 //Global Constants
 const unsigned int MAXRND=pow(2,31)-1; //Max unsigned int value
-const unsigned int  MXRND=(1<<31)-1;   //Same max unsigned int
+const unsigned int MXRND=(1<<31)-1;    //Same max unsigned int
 const int SIZE=3;
 const int SIZE1=4;
+const int SIZE2=5;
 
 //Function Prototypes
 void dspMenu();
@@ -55,6 +56,8 @@ void getPin(int[],int);
 void gnerate(int[],int);
 void getCode(int[],int);
 void compare(int[],int[],int[]);
+void viewScd(string[][SIZE2]);
+void mark(string[][SIZE2]);
 //Execution
 
 int main(int argc, char** argv) {
@@ -227,10 +230,6 @@ do{
         break;
     }
     case 10:{
-        cout<<"Placeholder"<<endl;
-        break;
-    }
-    case 11:{
         char tic[SIZE][SIZE]={'1','2','3',
                               '4','5','6',
                               '7','8','9'};
@@ -253,7 +252,7 @@ do{
         else cout<<"It's a tie."<<endl;
         break;
     }
-    case 12:{
+    case 11:{
         //Variables
         const int SIZE0=7;
         char seats[SIZE0][SIZE1]={'A','B','C','D','A','B','C','D','A','B','C','D',
@@ -268,6 +267,49 @@ do{
             display(seats,SIZE0);
             if(i==27)cout<<"All the seats are taken."<<endl;
         }
+        break;
+    }
+    case 12:{
+        //Variables
+        int choice,ans;
+        string jeff[SIZE2][SIZE2]={"Jeff ","Monday ","Tuesday","Wdnesdy","Thrsday",
+                                 "11-12","   o   ","   o   ","   o   ","   o   ",
+                                 "12-1 ","   o   ","   o   ","   o   ","   o   ",
+                                 "1-2  ","   o   ","   o   ","   o   ","   o   ",
+                                 "2-3  ","   o   ","   o   ","   o   ","   o   "};
+        string anna[SIZE2][SIZE2]={"Anna ","Monday ","Tuesday","Wdnesdy","Thrsday",
+                                 "11-12","   o   ","   o   ","   o   ","   o   ",
+                                 "12-1 ","   o   ","   o   ","   o   ","   o   ",
+                                 "1-2  ","   o   ","   o   ","   o   ","   o   ",
+                                 "2-3  ","   o   ","   o   ","   o   ","   o   "};
+        do{
+        //Input Data
+            cout<<"Select 1 to view a schedule.\n"
+                  "Select 2 to edit a schedule.\n"
+                  "Select 3 to view all schedules.\n";
+            cin>>choice;
+
+        //Process Data
+            switch(choice){
+                case 1:cout<<"Select 1 for Jeff\n"
+                             "Select 2 for Anna"<<endl;
+                        cin>>choice;
+                        if(choice==1)viewScd(jeff);
+                        else viewScd(anna);break;
+                case 2:cout<<"Select 1 for Jeff\n"
+                             "Select 2 for Anna"<<endl;
+                        cin>>choice;
+                        if(choice==1)mark(jeff);
+                        else mark(anna);break;
+                case 3:viewScd(jeff);viewScd(anna);break;
+                default:cout<<"Incorrect input"<<endl;
+            }
+            cout<<"Do you wish to run this program again? 1 for yes, anything else to exit."
+                <<endl;
+            cin>>ans;
+        }while(ans==1);
+        //Output Data
+        cin.ignore();
         break;
     }
     case 13:{
@@ -333,12 +375,12 @@ void dspMenu(){
         //Orders array greatest to least and counts the repeat occurrences.
           "9.   Savitch_9thEd_Chap7_Proj06_InsertionSort\n"
         //Insertion Sort.
-          "10.  Savitch_9thEd_Chap7_Proj08_LetterCount\n"
-        //Counts letters in a string and orders then most occuring to least.
-          "11.  Savitch_9thEd_Chap7_Proj10_TicTacToe\n"
+          "10.  Savitch_9thEd_Chap7_Proj10_TicTacToe\n"
         //Plays tic-tac-toe.
-          "12.  Savitch_9thEd_Chap7_Proj11_AirplaneSeats\n"
+          "11.  Savitch_9thEd_Chap7_Proj11_AirplaneSeats\n"
         //Assigns planes seats.
+          "12.  Savitch_9thEd_Chap7_Proj17_FreeBusySchedule\n"
+        //Views and edits the schedules of Jeff and Anna.
           "13.  Savitch_9thEd_Chap7_Proj19_SecretPinPassword\n"
         //Enter in a 5 digit pin converted to a code.
           "14.  Assignment_6&7_menu"<<endl;
@@ -727,4 +769,40 @@ void compare(int pin[],int guess[],int num[]){
     }
     if(correct)cout<<"Authentication Process Complete"<<endl;
     else cout<<"Incorrect PIN"<<endl;
+}
+
+void viewScd(string a[][SIZE2]){
+    //Output Data
+    cout<<"o's Show free hour slots\nx's show busy hour slots"<<endl;
+    for(int i=0;i<SIZE2;i++){
+        for(int j=0;j<SIZE2;j++){
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+void mark(string a[][SIZE2]){
+    //Declare Variables
+    int row,col;
+    char choice;
+    //Input Data
+    cout<<"Select 1 to mark time slot as busy,\n"
+          "Select 2 to mark time slot as free."<<endl;
+    cin>>choice;
+    if (choice=='1'){
+        viewScd(a);
+        cout<<"Input the row[1,4] and column[1,4] you wish to edit. Separate by space.\n";
+        cin>>row>>col;
+        a[row][col]="   x   ";
+        viewScd(a);
+    }
+    else{
+        viewScd(a);
+        cout<<"Input the row[1,4] and column[1,4] you wish to edit. Separate by space.\n";
+        cin>>row>>col;
+        a[row][col]="   o   ";
+        viewScd(a);
+    }
 }
