@@ -1,0 +1,20 @@
+Normal Mode:
+Guess the Ai's 4 digit code in 8 turns.
+First, type in your 4 digit combination. Numbers 1-8, no duplicates.
+Next, the computer will tell you how you are doing.
+X's = correct number and position.
+O's = correct number but incorrect position.
+If you don't guess a correct number you will go straight to the next turn.
+If you can't guess the computer's combination in 8 turns, you lose.
+
+Hard Mode:
+The Ai may choose duplicate numbers!
+But you have up to 12 turns to guess the code.
+
+Hints:
+If you feel stuck, type in 4 zeros(0000) to get a hint.
+You will get all 4 digits of the combination, least to greatest,
+but you still have to guess their position.
+This will not count as a win on the leaderboard.
+
+Good Luck!

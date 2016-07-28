@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Javier Borja
- * Created on July 16, 2016, 11:15 AM
+ * Created on July 27, 2016, 3:40 PM
  * Purpose: Player guesses a 4 digit combination against the computer.
  */
 
@@ -19,15 +19,16 @@ using namespace std;  //Namespace of the System Libraries
 //User Libraries
 
 //Global Constants
-const int CODE=4; //Size of code
+const int SIZE=4; //Size of code
 //Function Prototypes
-bool gameEz(int &turn,bool&);    //Normal Mode of MasterMind
-bool gameHrd(int &turn,bool&);   //Hard Mode of MasterMind
-bool turn(int[][CODE],bool&);    //A single turn of mastermind
-void help(int[][CODE]);          //Hint
-void read();                     //Read rules
-void menu();                     //Menu
-void result(int,bool,bool,bool); //Result of game
+bool game(int &turn,bool&,bool&); //A single game of MasterMind
+bool turn(int[][SIZE],bool&);     //A single turn of mastermind
+void help(int[][SIZE]);           //Hint
+void read();                      //Read rules
+void menu();                      //Menu
+void result(int,bool,bool,bool);  //Result of game
+void sort(int[],int);
+void swap(int[],int,int);
 
 //Execution
 
@@ -36,13 +37,14 @@ int main(int argc, char** argv) {
     srand(static_cast<unsigned int>(time(0)));
     
     //Variables
-    const int SIZE=20;
-    char   fName[SIZE];     //First Name
+    const int NAME=20;
+    char   fName[NAME];     //First Name
     string lName;           //Last Name
     char choice;            //Menu choice
     int trn;                //Turn
     bool win;               //Game result. True results in win
     bool hint;              //Hint
+    bool ez;                //Difficulty easy or hard
     unsigned int wins=0;
     unsigned int loss=0;
     ofstream out;           //Output results to file
@@ -60,7 +62,9 @@ int main(int argc, char** argv) {
         cin>>choice;
         cout<<endl;
         switch(choice){
-            case'1':win=gameEz(trn,hint);
+            case'1':
+                ez=true;
+                win=game(trn,hint,ez);
             if(hint==true&&win==true)
                 break;
             if(hint==true&&win==false){
@@ -70,9 +74,11 @@ int main(int argc, char** argv) {
             if(win==true)
                 wins++;
             else
-                loss+=1;
+                loss++;
             break;
-            case'2':win=gameHrd(trn,hint);
+            case'2':
+                ez=false;
+                win=game(trn,hint,ez);
             if(hint==true&&win==true)
                 break;
             if(hint==true&&win==false){
@@ -80,12 +86,11 @@ int main(int argc, char** argv) {
                 break;
             }
             if(win==true)
-                wins++;
+                wins+=2;
             else
-                loss+=1;
+                loss++;
             break;
             case'3':read();break;
-            case'4':break;
         }
     }while (choice=='1'||choice=='2'||choice=='3'||choice=='4');
     
@@ -105,32 +110,45 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-bool gameEz(int &trn,bool& hint){
+bool game(int &trn,bool &hint,bool &ez){
     //Set variables
-    const int SIZE=2;     //Two codes, Ai choice and player choice
-    int code[SIZE][CODE]; //2x4 Array
+    const int ROW=2;     //Two codes, Ai choice and player choice
+    int code[ROW][SIZE]; //2x4 Array
     bool win;
     bool nxtTrn;
          nxtTrn=true;     //Decides to go to next turn
-    bool normal=true;     //Normal mode = true
      
     //Process Data and get random combination
     trn=1;
     hint=false;
-    code[0][0]=(rand()%8+1);
-    do{                        
+    if(ez=true){
+        //Normal Mode
+        code[0][0]=(rand()%8+1);
+        do{                        
+            code[0][1]=(rand()%8+1);
+        }while (code[0][1]==code[0][0]);                         //No duplicates
+        do{
+            code[0][2]=(rand()%8+1);
+        }while (code[0][2]==code[0][1]||code[0][2]==code[0][0]); //No duplicates
+        do{
+            code[0][3]=(rand()%8+1);
+        }while (code[0][3]==code[0][2]||code[0][3]==code[0][1]|| //No duplicates
+                code[0][3]==code[0][0]);
+        for(int maxTrn=8;(trn<=maxTrn&&nxtTrn==true);trn++){//Max turns 8
+            cout<<"Turn = "<<trn<<endl;
+            nxtTrn=turn(code,hint);
+        }
+    }
+    else{
+        //Hard Mode
+        code[0][0]=(rand()%8+1); //Duplicates allowed
         code[0][1]=(rand()%8+1);
-    }while (code[0][1]==code[0][0]);                         //No duplicates
-    do{
         code[0][2]=(rand()%8+1);
-    }while (code[0][2]==code[0][1]||code[0][2]==code[0][0]); //No duplicates
-    do{
         code[0][3]=(rand()%8+1);
-    }while (code[0][3]==code[0][2]||code[0][3]==code[0][1]|| //No duplicates
-            code[0][3]==code[0][0]);
-    for(int maxTrn=8;(trn<=maxTrn&&nxtTrn==true);trn++){//Game ends at 10 turns
-        cout<<"Turn = "<<trn<<endl;
-        nxtTrn=turn(code,hint);
+        for(int maxTrn=12;(trn<=maxTrn&&nxtTrn==true);trn++){//Max turns 12
+            cout<<"Turn = "<<trn<<endl;
+            nxtTrn=turn(code,hint);
+        }
     }
     trn--;          //Offset the extra turn from end of loop
     if(nxtTrn==true)
@@ -138,47 +156,17 @@ bool gameEz(int &trn,bool& hint){
     else win=true;  //Win if game doesn't need to go to another turn
     
     //Output Result
-    result(trn,win,hint,normal);
+    result(trn,win,hint,ez);
     
     return(win);
 }
 
-bool gameHrd(int &trn,bool& hint){
-    //Set variables
-    const int SIZE=2;     //Two codes, Ai choice and player choice
-    int code[SIZE][CODE]; //2x4 Array
-    bool win;
-    bool nxtTrn;
-         nxtTrn=true;     //Decides to go to next turn
-    bool normal=false;    //Normal mode = false
-     
-    //Process Data and get random combination
-    trn=1;
-    hint=false;
-    code[0][0]=(rand()%8+1);            
-    code[0][1]=(rand()%8+1);
-    code[0][2]=(rand()%8+1);
-    code[0][3]=(rand()%8+1);
-    for(int maxTrn=12;(trn<=maxTrn&&nxtTrn==true);trn++){//Game ends at 10 turns
-        cout<<"Turn = "<<trn<<endl;
-        nxtTrn=turn(code,hint);
-    }
-    trn--;          //Offset the extra turn from end of loop
-    if(nxtTrn==true)
-        win=false;  //Lose if the game still wants to go to another turn
-    else win=true;  //Win if game doesn't need to go to another turn
-    
-    //Output Result
-    result(trn,win,hint,normal);
-    
-    return(win);
-}
-
-bool turn(int a[][CODE],bool& hint){
-    for(int i=0;i<CODE;i++){
+bool turn(int a[][SIZE],bool& hint){
+    for(int i=0;i<SIZE;i++){
         cout<<"a[0]["<<i<<"] = "<<a[0][i]<<endl;
     }
     //Declare Variables
+    int orig1,orig2,orig3,orig4;
     bool nxtTrn;
          nxtTrn=true;
     stringstream ss1,ss2,ss3,ss4;
@@ -191,50 +179,102 @@ bool turn(int a[][CODE],bool& hint){
     ss2<<p2; ss2>>a[1][1];
     ss3<<p3; ss3>>a[1][2];
     ss4<<p4; ss4>>a[1][3];
+    orig1=a[1][0];
+    orig2=a[1][1];
+    orig3=a[1][2];
+    orig4=a[1][3];
     //Output Data
-    if(a[0][0]==a[1][0]) //If number and position match
+    if(a[0][0]==a[1][0]){ //If number and position match
         cout<<"X";
-    if(a[0][1]==a[1][1]) //If number and position match
+        a[1][0]=-1;
+    }
+    if(a[0][1]==a[1][1]){ //If number and position match
         cout<<"X";
-    if(a[0][2]==a[1][2]) //If number and position match
+        a[1][1]=-2;
+    }
+    if(a[0][2]==a[1][2]){ //If number and position match
         cout<<"X";
-    if(a[0][3]==a[1][3]) //If number and position match
+        a[1][2]=-3;
+    }
+    if(a[0][3]==a[1][3]){ //If number and position match
         cout<<"X";
-    if(a[1][0]==a[0][1]||a[1][0]==a[0][2]||a[1][0]==a[0][3]) //If numbers match
+        a[1][3]=-4;
+    }
+    if(a[1][0]==a[0][1]||a[1][0]==a[0][2]||a[1][0]==a[0][3]){ //If numbers match
         cout<<"O";
-    if(a[1][1]==a[0][0]||a[1][1]==a[0][2]||a[1][1]==a[0][3]) //If numbers match
+        a[1][0]=-1;
+    }
+    if(a[1][1]==a[0][0]||a[1][1]==a[0][2]||a[1][1]==a[0][3]){ //If numbers match
         cout<<"O";
-    if(a[1][2]==a[0][1]||a[1][2]==a[0][0]||a[1][2]==a[0][3]) //If numbers match
+        a[1][1]=-2;
+    }
+    if(a[1][2]==a[0][0]||a[1][2]==a[0][1]||a[1][2]==a[0][3]){ //If numbers match
         cout<<"O";
-    if(a[1][3]==a[0][1]||a[1][3]==a[0][2]||a[1][3]==a[0][0]) //If numbers match
+        a[1][2]=-3;
+    }
+    if(a[1][3]==a[0][0]||a[1][3]==a[0][1]||a[1][3]==a[0][2]){ //If numbers match
         cout<<"O";
+        a[1][3]=-4;
+    }
     if(a[1][0]==0&&a[1][1]==0&&a[1][2]==0&&a[1][3]==0){
         hint=true;
         help(a);
     }
+    a[1][0]=orig1;
+    a[1][1]=orig2;
+    a[1][2]=orig3;
+    a[1][3]=orig4;
+    nxtTrn=(a[0][0]==a[1][0]&&a[0][1]==a[1][1]&&
+    a[0][2]==a[1][2]&&a[0][3]==a[1][3])?false:true;
     cout<<endl<<"************************************************************";
     cout<<endl;
-    nxtTrn=(a[0][0]==a[1][0]&&a[0][1]==a[1][1]&&
-            a[0][2]==a[1][2]&&a[0][3]==a[1][3])?false:true;
+    cout<<"nxtTrn= "<<nxtTrn<<endl;
     //If combinations equal then no need for next turn.
     return(nxtTrn);
 }
 
-void help(int a[][CODE]){
+void help(int a[][SIZE]){
     //Declare Variables
+    int b[SIZE]; //Original array, sorted
+    //Input data
+    for(int i=0;i<SIZE;i++){
+        b[i]=a[0][i];
+    }
+    sort(b,SIZE);
+    for(int i=0;i<SIZE;i++){
+        cout<<b[i];
+    }
+    cout<<endl;
 }
 
-void result(int turn, bool win,bool hint,bool normal){//Result of game
+void sort(int a[],int n){
+    for(int i=0;i<n-1;i++){
+        for(int x=i+1;x<n;x++){
+            if(a[i]>a[x]){
+                swap(a,i,x);
+            }
+        }
+    }
+}
+
+void swap(int a[],int x,int y){
+    a[x]=a[x]^a[y];
+    a[y]=a[x]^a[y];
+    a[x]=a[x]^a[y];
+}
+
+void result(int turn, bool win,bool hint,bool ez){//Result of game
     //Output Data
+    if(win==0){
+        cout<<"You lose!\n"
+              "Better luck next time."<<endl<<endl;
+        return;
+    }
     if (hint==true){
         cout<<"You used a hint, win doesn't count."<<endl<<endl;
         return;
     }
-    if(win==0){
-        cout<<"You lose!\n"
-              "Better luck next time"<<endl;
-    }
-    else if(normal==true){
+    else if(ez==true){
         switch(turn){
             case 1:
             case 2:
