@@ -14,8 +14,8 @@ using namespace std;
 struct Score{
     int wins;
     int loss;
-    string first;
-    string last;
+    string first; //Name
+    string last;  //Name
 };
 
 #endif	// SCORE_H

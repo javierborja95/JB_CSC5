@@ -32,7 +32,6 @@ void menu();                        //Menu
 void sort(int[],int);               //Sort hint
 void sort(vector<Score>&,int);      //Sort leaderboard
 void swap(int[],int,int);           //Swap
-void swap(int&,int&,int);           //Swap
 void lderBrd();                     //Leaderboard
 void result(int,bool,bool,bool,int[][SIZE]); //Result of game
  
@@ -175,22 +174,22 @@ bool turn(int a[][SIZE],bool& hint,bool ez){
     else
     cout<<"Enter a 4 digit combination using numbers 1-8, duplicates allowed\n";
     cout<<"To call a hint input 4 zeros (0,0,0,0)"<<endl;
-    cin>>p1>>p2>>p3>>p4;  //Input player, 4 character combination
+    cin>>p1>>p2>>p3>>p4;   //Input player, 4 character combination
     //Process Data
-    ss1<<p1; ss1>>a[1][0];
+    ss1<<p1; ss1>>a[1][0]; //Convert char to ints
     ss2<<p2; ss2>>a[1][1];
     ss3<<p3; ss3>>a[1][2];
     ss4<<p4; ss4>>a[1][3];
-    orig1=a[1][0]; orig5=a[0][0];
+    orig1=a[1][0]; orig5=a[0][0]; //Copy original Values
     orig2=a[1][1]; orig6=a[0][1];
     orig3=a[1][2]; orig7=a[0][2];
     orig4=a[1][3]; orig8=a[0][3];
     //Output Data
     if(a[0][0]==a[1][0]){ //If number and position match
         cout<<"X";
-        a[1][0]=-1;
-        a[0][0]=-1;
-    }
+        a[1][0]=-1;       //Change value to prevent duplication bugs when
+        a[0][0]=-1;       //    comparing with other digits
+    }                     //Prevents outputs like 'XXXOOO'
     if(a[0][1]==a[1][1]){ //If number and position match
         cout<<"X";
         a[1][1]=-2;
@@ -226,7 +225,7 @@ bool turn(int a[][SIZE],bool& hint,bool ez){
         hint=true;
         help(a);
     }
-    a[1][0]=orig1;
+    a[1][0]=orig1; //Set back to original values
     a[1][1]=orig2;
     a[1][2]=orig3;
     a[1][3]=orig4;
@@ -236,12 +235,12 @@ bool turn(int a[][SIZE],bool& hint,bool ez){
     a[0][3]=orig8;
     nxtTrn=(a[0][0]==a[1][0]&&a[0][1]==a[1][1]&&
     a[0][2]==a[1][2]&&a[0][3]==a[1][3])?false:true;
-    if(ez==true)
+    //If combinations equal then no need for next turn.
+    if(ez==true) //Different output based on mode, just for program to look pretty
     cout<<endl<<"************************************************************";
     else
     cout<<endl<<"*****************************************************************";
     cout<<endl;
-    //If combinations equal then no need for next turn.
     return(nxtTrn);
 }
 
@@ -291,13 +290,6 @@ void sort(vector<Score>& a,int n){
             }
         }
     }while(goAgn==true);
-}
-
-void swap(int& x,int& y,int){
-    //Process Data
-    x=x^y;
-    y=x^y;
-    x=x^y;
 }
 
 void result(int turn, bool win,bool hint,bool ez,int a[][SIZE]){//Result of game
@@ -407,7 +399,7 @@ void read(){ //Input Rules to display
 void menu(){
     cout<<"Press 1 to play Normal Mode MasterMind.\n"
           "Press 2 to play Hard Mode MasterMind.\n"
-          "Press 3 to read the rules.\n"
+          "Press 3 to learn how to play.\n"
           "Press 4 to see the leaderboard.\n"
           "Press anything else to exit."<<endl;
 }
@@ -424,7 +416,6 @@ void lderBrd(){
         cout<<"Input file opening failed.\n";
         return;
     }
-    //else cout<<"Input file opening success."<<endl;
     cout<<"Sorted by amount of wins per session."<<endl;
     do{
         line>>player[count].wins;
