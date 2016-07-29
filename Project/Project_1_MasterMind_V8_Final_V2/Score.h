@@ -7,7 +7,6 @@
 
 #ifndef SCORE_H
 #define SCORE_H
-#include <string>
 
 using namespace std;
 

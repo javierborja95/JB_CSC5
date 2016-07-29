@@ -24,7 +24,7 @@ using namespace std;  //Namespace of the System Libraries
 const int SIZE=4; //Size of code
 
 //Function Prototypes
-bool game(int &turn,bool&,bool);    //A single game of MasterMind
+bool game(int &turn,bool&,bool=true);//A single game of MasterMind
 bool turn(int[][SIZE],bool&,bool);  //A single turn of mastermind
 void help(int[][SIZE]);             //Hint
 void read();                        //Read rules
@@ -65,8 +65,7 @@ int main(int argc, char** argv) {
         cout<<endl;
         switch(choice){
             case'1':
-                ez=true;
-                win=game(trn,hint,ez);
+                win=game(trn,hint);
             if(hint==true&&win==true)
                 break;
             if(hint==true&&win==false){
@@ -99,7 +98,7 @@ int main(int argc, char** argv) {
     
     //Output Data and output to file
     cout<<"Thanks for playing "<<user.first<<" "<<user.last<<endl;
-    cout<<"Wins this session   = "<<user.wins<<endl;
+    cout<<"Wins this session"<<setw(5)<<"= "<<user.wins<<endl;
     cout<<"Losses this session = "<<user.loss<<endl;
     out.open("stats.dat",ios::app); //Append to file
     if (out.fail())
